@@ -21,7 +21,7 @@ namespace BlogCore.AccesoDatos.Data.Repository
             var objFromDb = _db.Categoria.FirstOrDefault(u => u.Id == categoria.Id);
             objFromDb.Nombre = categoria.Nombre;
             objFromDb.Orden = categoria.Orden;
-            _db.SaveChanges();
+         
         }
     }   
     
