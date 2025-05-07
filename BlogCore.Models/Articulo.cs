@@ -30,7 +30,7 @@ namespace BlogCore.Models
         [Display(Name = "Imagen")]       
         public string UrlImagen { get; set; }
 
-        [Required(ErrorMessage = "El id  es obligatorio.")]
+        [Required(ErrorMessage = "El CategoriaId es obligatorio.")]
         public int CategoriaId { get; set; }
 
         [ForeignKey("CategoriaId")]
