@@ -16,6 +16,8 @@ namespace BlogCore.AccesoDatos.Data.Repository
         {
             _db = db;
         }
+           
+
         public void Update(Articulo articulo)
         {
             var objFromDb = _db.Articulo.FirstOrDefault(u => u.Id == articulo.Id);

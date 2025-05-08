@@ -20,7 +20,7 @@ namespace BlogCore.Models
 
         [Required(ErrorMessage = "El campo Descripción es obligatorio.")]
         [Display(Name = "Descripción del Artículo")]
-        [StringLength(100, ErrorMessage = "El campo Nombre no puede tener más de 100 caracteres.")]
+        [StringLength(100, ErrorMessage = "El campo Descripción no puede tener más de 100 caracteres.")]
         public string Descripcion { get; set; }
 
         [Display(Name = "Fecha de creación")]
