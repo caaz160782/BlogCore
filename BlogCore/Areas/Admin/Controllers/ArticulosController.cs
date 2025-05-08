@@ -40,7 +40,10 @@ namespace BlogCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ArticuloVM artiVm)
         {
-           if (!ModelState.IsValid)
+            ModelState.Remove("Articulo.UrlImagen");
+            ModelState.Remove("Articulo.Categoria");
+            ModelState.Remove("ListaCategorias");
+            if (ModelState.IsValid)
             {
                 string rutaPRincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;

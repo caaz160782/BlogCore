@@ -6,8 +6,10 @@
 <h3 class="text-center"> Crear un articulo</h3>
 <form method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="row px-2 offset-1 border">
-        <div asp-validation-summary="All" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
         <div class="col-10 offset-1 mt-4">
+            <br />
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Articulo.Nombre" class="control-label"></label>
@@ -18,13 +20,13 @@
                 </div>
             </div>
 
-            <br />
+         <br />
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Articulo.Descripcion" class="control-label"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Articulo.Descripcion" class="form-control" placeholder="Ingrese la descripcion" />
+                    <textarea asp-for="Articulo.Descripcion" class="form-control" style="height: 300px;"></textarea>
                     <span asp-validation-for="Articulo.Descripcion" class="text-danger"></span>
                 </div>
             </div>
@@ -70,4 +72,23 @@
         </div>
     </div>
 </form>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/tinymce.min.js" integrity="sha512-bib7srucEhHYYWglYvGY+EQb0JAAW0qSOXpkPTMgCgW8eLtswHA/K4TKyD4+FiXcRHcy8z7boYxk0HTACCTFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+          tinymce.init({
+          selector: 'textarea',
+          height: 500,
+          plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount'
+          ],
+          toolbar: 'undo redo | blocks | ' +
+          'bold italic backcolor | alignleft aligncenter ' +
+          'alignright alignjustify | bullist numlist outdent indent | ' +
+          'removeformat | help',
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+        });
+    </script>
+}
 
