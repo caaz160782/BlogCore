@@ -1,14 +1,15 @@
 ﻿@model BlogCore.Models.ViewModels.ArticuloVM;
 @{
-    ViewData["Title"] = "Crear Articulos";
+    ViewData["Title"] = "Editar Articulos";
 }
 <br />
-<h3 class="text-center"> Crear un articulo</h3>
-<form method="post" asp-action="Create" enctype="multipart/form-data">
-    <div class="row px-2 offset-1 border">
+<h3 class="text-center"> Editar articulo</h3>
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input asp-for="Articulo.Id" type="hidden" />
+    <div class="row px-2  border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
-        <div class="col-10 offset-1 mt-4">
+
+        <div class="col-8  mt-4">
             <br />
             <div class="form-group row">
                 <div class="col-4">
@@ -20,7 +21,7 @@
                 </div>
             </div>
 
-         <br />
+            <br />
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Articulo.Descripcion" class="control-label"></label>
@@ -30,7 +31,7 @@
                     <span asp-validation-for="Articulo.Descripcion" class="text-danger"></span>
                 </div>
             </div>
-            
+
             <br />
             <div class="form-group row">
                 <div class="col-4">
@@ -48,19 +49,19 @@
                     <label asp-for="Articulo.UrlImagen"></label>
                 </div>
                 <div class="col-8">
-                    <input  type="file" class="form-control" name="archivos" id="subidaArchivo"/>
+                    <input type="file" class="form-control" name="archivos" id="subidaArchivo" />
                     <span asp-validation-for="Articulo.UrlImagen" class="text-danger"></span>
                 </div>
             </div>
-
-
+            <br />
+           
             <br />
             <div class="from-group row">
                 <div class="col-12">
-                    
+
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary form-control">Crear Artículo</button>
+                            <button type="submit" class="btn btn-primary form-control">Editar Artículo</button>
                         </div>
                         &nbsp;
                         <div class="col">
@@ -70,6 +71,10 @@
                 </div>
             </div>
         </div>
+        <div class="col-4 pt-3">
+            <img src="@Url.Content(Model.Articulo.UrlImagen)" alt="Imagen" class="img-fluid" />
+        </div>
+             
     </div>
 </form>
 @section Scripts {
@@ -91,4 +96,3 @@
         });
     </script>
 }
-
