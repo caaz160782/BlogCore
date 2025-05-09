@@ -1,0 +1,17 @@
+﻿@model BlogCore.Models.Articulo;
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <img src="@Model.UrlImagen" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">@Model.Descripcion</p>
+        </div>
+    </div>
+    <div class="col">
+        <a asp-action="Index" class="btn btn-success form-control">Volver </a>
+    </div>
+</div>
+

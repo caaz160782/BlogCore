@@ -47,7 +47,13 @@
                 <partial name="_LoginPartial" />    
             </div>
         </nav>
-    </header>
+        <!--vista parcial silder-->
+        @if (ViewBag.IsHome == true)
+        {
+            <partial name="_VistaSlider" />
+        }
+
+     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

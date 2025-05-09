@@ -26,8 +26,19 @@ namespace BlogCore.Areas.Cliente.Controllers
                 Sliders = _contenedorTrabajo.Slider.GetAll(),
                 ListArticulos = _contenedorTrabajo.Articulo.GetAll(includeProperties: "Categoria")
             };
+
+            ViewBag.IsHome = true;
+
             return View(homeVM);
         }
+
+        [HttpGet]
+        public IActionResult Detalle(int id)
+        {
+            var articuloDesdeBd = _contenedorTrabajo.Articulo.Get(id);          
+            return View(articuloDesdeBd);
+        }
+
 
         public IActionResult Privacy()
         {
