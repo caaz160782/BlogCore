@@ -5,7 +5,7 @@
 
 <div class="row mt-1">
     <div class="col-sm-12">
-        <h1 class="text-center text-white bg-secondary py-1"> Últimos Cursos y tutoriales< /h1>
+        <h1 class="text-center text-dark bg-secondary py-1"> Últimos Cursos y tutoriales </h1>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
                     <img src="@Url.Content(articulo.UrlImagen)" class="card-img-top" alt="@articulo.Nombre" />
                     <div class="card-body">
                         <h5 class="text-center">@articulo.Nombre </h5>
-                        <a asp-action="Detalle" class="btn btn-success" style="border-radius; 10px" asp-route-id="@articulo,Id">
+                        <a asp-action="Detalle" class="btn btn-success" style="border-radius; 10px" asp-route-id="@articulo.Id">
                             <i class="fa-solid fa-eye"></i> Ver Detalle
                         </a>
                     </div>
