@@ -161,6 +161,7 @@ namespace BlogCore.Areas.Identity.Pages.Account
                     else
                     {
                         await _userManager.AddToRoleAsync(user, CNT.Registrado);
+
                     }
 
 
