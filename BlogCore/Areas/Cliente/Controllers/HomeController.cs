@@ -18,19 +18,49 @@ namespace BlogCore.Areas.Cliente.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        //Primera versión página de inicio sin paginación
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    HomeVM homeVM = new HomeVM()
+        //    {
+        //        Sliders = _contenedorTrabajo.Slider.GetAll(),
+        //        ListArticulos = _contenedorTrabajo.Articulo.GetAll()
+        //    };
+
+        //    //Esta línea es para poder saber si estamos en el home o no
+        //    ViewBag.IsHome = true;
+
+        //    return View(homeVM);
+        //}
+
+        //Segunda versión página de inicio con paginación
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, int pageSize = 5)
         {
+
+            var articulos = _contenedorTrabajo.Articulo.AsQueryable();
+
+            // Paginar los resultados
+            var paginatedEntries = articulos.Skip((page - 1) * pageSize).Take(pageSize);
+
             HomeVM homeVM = new HomeVM()
             {
                 Sliders = _contenedorTrabajo.Slider.GetAll(),
-                ListArticulos = _contenedorTrabajo.Articulo.GetAll(includeProperties: "Categoria")
+                ListArticulos = paginatedEntries.ToList(),
+                PageIndex = page,
+                TotalPages = (int)Math.Ceiling(articulos.Count() / (double)pageSize)
             };
 
+            //Esta línea es para poder saber si estamos en el home o no
             ViewBag.IsHome = true;
 
             return View(homeVM);
         }
+
+
+
+
         //Para buscador
         [HttpGet]
         public IActionResult ResultadoBusqueda(string searchString, int page = 1, int pageSize = 3)
